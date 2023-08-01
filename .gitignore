@@ -1,0 +1,20 @@
+# Prisma
+.env
+.env.local
+.vscode
+.DS_Store
+
+# Generated Prisma client
+/node_modules
+/prisma
+
+# Ignore all migration files in migration directory except for README.md
+/prisma/migrations/*
+!/prisma/migrations/README.md
+
+# Ignore database backups created with prisma db export
+*.tar.gz
+*.zip
+*.backup
+*.sql
+test
