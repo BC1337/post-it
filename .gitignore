@@ -18,3 +18,16 @@
 *.backup
 *.sql
 test
+
+# Next.js
+/.next/
+/out/
+
+# Next.js development server cache
+/.next-server/
+
+# Next.js Image Component cache
+/public/_next/
+
+# Next.js telemetry
+/next-telemetry.json
