@@ -1,7 +1,8 @@
 'use client'
 import { useState } from "react"
 import {useMutation, useQueryClient} from "@tanstack/react-query"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
+import toast from 'react-hot-toast'
 
 export default function CreatePost(){
     const [title, setTitle] = useState('')
@@ -10,7 +11,15 @@ export default function CreatePost(){
     // create a post
     const {mutate} = useMutation(
         async (postData: {title: string}) => {
+            if (!postData.title) {
+                toast.error("Please enter a title before submitting.");
+                return;
+              }
+
             await axios.post('/api/posts/addPost', postData)
+
+            setTitle('')
+            toast.success('Post has been created!')
         } 
     )
 
