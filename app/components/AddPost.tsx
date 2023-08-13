@@ -7,24 +7,26 @@ import toast from 'react-hot-toast'
 export default function CreatePost(){
     const [title, setTitle] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
+    let toastPostID: string
 
     // create a post
     const {mutate} = useMutation(
         async (postData: {title: string}) => {
             if (!postData.title) {
-                toast.error("Please enter a title before submitting.");
+                toast.error("Please enter a title before submitting."), {id: toastPostID};
                 return;
               }
 
             await axios.post('/api/posts/addPost', postData)
 
             setTitle('')
-            toast.success('Post has been created!')
+            toast.success('Post has been created 🔥' , {id: toastPostID})
         } 
     )
 
     const submitPost = async (e: React.FormEvent) => {
         e.preventDefault()
+        toastPostID = toast.loading("Creating your post", {id: toastPostID})
         setIsDisabled(true)
         const response = mutate({ title });
     }
