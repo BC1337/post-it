@@ -31,8 +31,6 @@ const page = () => {
     return <div>Loading...</div>
   }
 
-  console.log(data)
-
   return (
     <main>
       <AddPost />
