@@ -26,6 +26,7 @@ export default function AddComment({id} : PostProps){
             onSuccess: data => {
                 setTitle("")
                 setIsDisabled(false)
+                queryClient.invalidateQueries(['detail-posts'])
                 toast.success("Added your comment!", { id: commentToastId })
             },
             onError: (error) => {
@@ -45,7 +46,7 @@ export default function AddComment({id} : PostProps){
     }
 
     return(
-        <form className="my-8" >
+        <form onSubmit={submitComment} className="my-8" >
             <h3>Add a comment</h3>
             <div className="flex flex-col my-2">
                 <input
