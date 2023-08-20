@@ -6,7 +6,7 @@
 
 # Generated Prisma client
 /node_modules
-/prisma
+
 
 # Ignore all migration files in migration directory except for README.md
 /prisma/migrations/*
